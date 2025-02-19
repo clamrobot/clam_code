@@ -1,0 +1,16 @@
+num_updates: 150_000
+log_terminal_every: 20_000 
+run_eval_rollouts: True
+log_rollout_videos: True
+
+data: 
+  data_type: transitions
+
+name: bc
+hp_name: nt-${data.num_trajs}_d-${env.ds_name}_s-${seed}_${env.hp_name}_gp-${model.gaussian_policy}_net-${model.net.hidden_dims}_lr-${optimizer.params.lr}
+
+defaults:
+  - base
+  - model: bc
+  - modules/encoder: mlp
+  - _self_

@@ -1,0 +1,4 @@
+name: null
+
+kwargs:
+  dim: null # input dum, should be filled in by the model

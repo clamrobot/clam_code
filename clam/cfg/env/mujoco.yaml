@@ -1,0 +1,14 @@
+env_name: mujoco
+env_id: halfcheetah-expert-v2
+dataset_name: d4rl_mujoco_halfcheetah/v2-expert
+
+image_obs: False
+
+# TODO: not used
+task_dim: 1
+max_episode_steps: 1000
+action_dim: 6
+
+defaults:
+  - base
+  - _self_

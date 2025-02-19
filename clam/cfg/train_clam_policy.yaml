@@ -1,0 +1,28 @@
+num_updates: 400_000
+log_terminal_every: 20_000 
+run_eval_rollouts: True
+log_rollout_videos: True
+
+# either provide lam w/ action decoder jointly trained
+lam_ckpt: null
+lam_ckpt_step: null
+
+# or provide both separately
+action_decoder_ckpt: null 
+action_decoder_ckpt_step: null
+
+data: 
+  data_type: n_step
+  seq_len: 3
+  num_trajs: 100
+
+name: clam_policy
+base_hp_name: nut-${data.num_trajs}_s-${seed}
+hp_name: ${resolve_ckpt_name:${base_hp_name},${lam_ckpt},${action_decoder_ckpt}}
+
+defaults:
+  - base
+  - model: clam_policy
+  - modules/encoder: mlp
+  - _self_
+  

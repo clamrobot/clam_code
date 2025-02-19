@@ -1,0 +1,11 @@
+# @package encoder
+
+name: cnn
+batch_norm: True
+residual_layer: True
+out_channels: [32, 64, 128, 128, 256, 256]
+kernel_size: [3, 3, 3, 3, 3, 3]
+stride: [1, 1, 1, 1, 1, 1]
+padding: [1, 1, 1, 1, 1, 1]
+
+# 84 -> 42 -> 21 -> 10 -> 5 -> 2 -> 1

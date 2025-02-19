@@ -1,0 +1,27 @@
+image_obs: ${env.image_obs}
+la_dim: 16
+embedding_dim: 256
+
+encoder:
+  hidden_dims: [256, 256]
+
+idm:
+  input_embed_dim: ${encoder.dim_model}
+  la_dim: ${model.la_dim}
+  net: ${encoder}
+
+  quantize_la: True
+  use_quantized_las: True
+  vq: ${model.vq}
+
+fdm: 
+  input_embed_dim: ${encoder.dim_model}
+  la_dim: ${model.la_dim}
+  net: ${decoder}
+
+cov_reg_weight: 0.04
+
+defaults:
+  - base
+  - vq: ema
+  - _self_

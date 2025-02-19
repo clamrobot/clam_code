@@ -1,0 +1,33 @@
+env_name: metaworld
+env_id: assembly
+
+dataset_name: tdmpc2-trained-500
+
+datasets:
+  - mw-${..env_id}-expert
+
+dataset_split: [1] # amount of each dataset to use for training, ratios 
+ 
+action_labelled_dataset:
+  - mw-${..env_id}-random
+
+action_labelled_dataset_split: [1] 
+
+ds_name: ${fix_ds_name:${env.datasets},${env.dataset_name},${env.dataset_split}}
+al_ds_name: ${fix_ds_name:${env.action_labelled_dataset},${env.dataset_name},${env.action_labelled_dataset_split}}
+
+image_obs: False
+
+# TODO: not used
+task_dim: 3
+max_episode_steps: 100
+action_dim: 4
+# image_shape: [224, 224]
+image_shape: [84, 84]
+
+n_frame_stack: 3
+action_repeat: 2
+
+defaults:
+  - base
+  - _self_

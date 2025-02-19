@@ -1,0 +1,11 @@
+# @package decoder
+
+name: upconv_cnn
+batch_norm: True
+residual_layer: True
+out_channels: [256, 256, 128, 128, 64, 32]
+kernel_size: [2, 3, 2, 3, 2, 2]
+stride: [1, 2, 2, 2, 2, 2]
+padding: [0, 0, 0, 0, 0, 0]
+
+# (2,2) doubles up the resolution

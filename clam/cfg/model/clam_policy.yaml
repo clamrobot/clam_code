@@ -1,0 +1,18 @@
+encoder: ${encoder}
+image_obs: ${env.image_obs}
+embedding_dim: 512
+
+net:
+  hidden_dims: [1024, 1024]
+
+gaussian_policy: False
+action_dim: null  # this will be set by the environment
+
+action_activation: null # predicting latent action, no need for activation
+action_scale: ${env.action_scale}
+
+# this is for when we have a distributional latent action
+use_latent_mean: False
+
+defaults:
+  - base

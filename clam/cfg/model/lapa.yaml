@@ -1,0 +1,22 @@
+backbone:
+  hidden_dims: [1024, 1024]
+
+latent_head:
+  hidden_dims: []
+
+action_head:
+  hidden_dims: []
+
+encoder: ${encoder}
+image_obs: ${env.image_obs}
+
+la_dim: 16
+embedding_dim: 128 
+gaussian_policy: False
+action_dim: ${env.action_dim} 
+
+action_activation: Tanh
+action_scale: ${env.action_scale}
+
+defaults:
+  - base

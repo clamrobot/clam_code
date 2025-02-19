@@ -1,0 +1,41 @@
+num_updates: 200_000
+log_terminal_every: 20_000 
+run_eval_rollouts: False
+log_rollout_videos: False
+
+joint_action_decoder_training: False
+num_labelled_trajs: 50
+train_action_decoder_every: 2
+action_decoder_bs: 128
+action_decoder_loss_weight: 0.01
+
+env:
+  n_frame_stack: 1
+  image_obs: True
+
+# optimizer for action_decoder
+decoder_optimizer:
+  name: 'AdamW'
+  params:
+    lr: 1e-3
+    eps: 1e-5
+    weight_decay: 0.01
+    betas: [0.9, 0.999]
+
+data: 
+  data_type: n_step
+  seq_len: ${eval:${model.context_len} + ${model.fdm.k_step_pred}}
+
+name: clam
+base_hp_name: AL-${env.al_ds_name}_nut-${data.num_trajs}_la-${model.la_dim}_d-${env.ds_name}_vq-${model.idm.quantize_la}_dist-${model.distributional_la}_kl-${model.kl_loss_weight}_l-${data.seq_len}_s-${seed}
+
+# extra config when we have joint action decoder training
+joint_extra: nt-${num_labelled_trajs}_te-${train_action_decoder_every}_adw-${action_decoder_loss_weight}
+hp_name: ${resolve_clam_name:${base_hp_name},${joint_action_decoder_training},${joint_extra},${model.idm.quantize_la},${model.idm.vq.hp_name}}
+
+defaults:
+  - base
+  - model: clam
+  - modules/encoder: cnn
+  - modules/decoder: cnn
+  - _self_

@@ -1,0 +1,14 @@
+idm:
+  patch_size: 16
+  seq_len: ${data.seq_len}
+  add_action_token: True
+  concatenate_gripper_state: ${model.concatenate_gripper_state}
+
+fdm:
+  patch_size: 16
+  seq_len: ${data.seq_len}
+  concatenate_gripper_state: ${model.concatenate_gripper_state}
+
+defaults:
+  - clam
+  - _self_

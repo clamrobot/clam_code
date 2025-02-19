@@ -1,0 +1,16 @@
+name: ema
+
+hp_name: ${.name}_cb-${.kwargs.codebook_size}-th-${.kwargs.threshold_ema_dead_code}
+
+kwargs:
+  codebook_size: 128 # codebook size
+  decay: 0.99 # the exponential moving average decay, lower means the dictionary will change faster
+  commitment_weight: 1.0 # the weight of the commitment loss
+  use_cosine_sim: False
+
+  # other misc settings
+  threshold_ema_dead_code: 2  # should actively replace any codes that have an exponential moving average cluster size less than 2
+
+defaults:
+  - base
+  - _self_

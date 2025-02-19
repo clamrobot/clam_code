@@ -1,0 +1,15 @@
+env_name: metaworld
+task_name: mw-hammer
+seed: 0
+data_dir: /scr/shared/clam/datasets/metaworld/tdmpc2_buffer_imgs
+tfds_data_dir: /scr/shared/clam/tensorflow_datasets
+dataset_name: tdmpc2-buffer-imgs
+precompute_embeddings: False 
+black_white: False
+batch_size: 64
+framestack: 1
+
+max_return: 1000
+num_samples: 500
+ckpt_num: 200000
+save_imgs: False

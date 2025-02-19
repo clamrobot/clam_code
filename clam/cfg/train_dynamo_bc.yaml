@@ -1,0 +1,22 @@
+num_updates: 200_000
+log_terminal_every: 20_000 
+run_eval_rollouts: True
+log_rollout_videos: True
+
+data: 
+  data_type: transitions 
+
+model:
+  feature_extractor: dynamo
+  finetune_feature_extractor: False
+  feature_extractor_ckpt: null
+
+name: bc
+hp_name: dynamo_${name}_${env.hp_name}_nt-${data.num_trajs}_gp-${model.gaussian_policy}
+
+defaults:
+  - base
+  - model: bc
+  - modules/encoder: mlp
+  - _self_
+

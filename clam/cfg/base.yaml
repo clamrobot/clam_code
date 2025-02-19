@@ -1,0 +1,103 @@
+# @package _global_
+
+exp_prefix: 'i001'
+exp_dir: '' # gets set in the trainer
+wandb_url: '' # gets set in the trainer
+
+# seed - set to -1 to choose random seed
+seed: 521
+
+# wandb configurations
+use_wandb: False
+wandb_group: ''
+wandb_name: ${hp_name}
+wandb_entity: 'clvr'
+wandb_project: 'clam'
+wandb_notes: ''
+wandb_tags: 
+  - 'clam'
+group_name: ''
+
+# evaluation
+eval_every: -1 
+
+# number of update steps between logging to terminal
+log_terminal_every: 50_000
+save_every: 50_000
+
+# number of total evaluation steps to run
+num_evals: 30
+disable_tqdm: False 
+run_eval_rollouts: False
+skip_first_eval: False 
+num_eval_rollouts: 40
+num_eval_rollouts_render: 2 
+log_rollout_videos: False
+video_fps: 20
+visualize_latent_space: False
+
+# total number of gradient updates
+num_updates: 400_000
+num_eval_steps: 500
+
+# resume training
+load_from_ckpt: False 
+ckpt_step: null # to be filled in
+ckpt_file: null # to be filled in
+mode: 'train'
+log_level: 'info'
+enable_jit: True
+save_key: null
+best_metric: 'max'
+
+clip_grad_norm: 1.0
+
+# optimizer and scheduling
+optimizer:
+  name: 'AdamW'
+  params:
+    lr: 3e-4
+    eps: 1e-5
+    weight_decay: 0.001
+    betas: [0.9, 0.999]
+  num_warmup_steps: 25_000
+
+# lr scheduling
+# lr_scheduler:
+#   name: 'CosineAnnealingLR'
+#   params:
+#     T_max: ${num_updates}
+#     eta_min: 1e-5
+
+lr_scheduler:
+  name: 'ConstantLR'
+  params:
+    factor: 1
+
+debug: False
+
+# config using huggingface accelerate for parallel training
+accelerate:
+  use: False
+  use_fp16: False
+
+# set the directory where the output files get saved
+hydra:
+  job:
+    name: ${name}
+
+  output_subdir: null
+  run:
+    dir: clam/results/${name}/${now:%Y-%m-%d}-${now:%H-%M-%S}/${hp_name}
+  
+  sweep:
+    dir: clam/results/${name}/${env.env_name}-${env.env_id}/${now:%Y-%m-%d}-${now:%H-%M-%S}
+    subdir: ${hydra.job.id}/${hp_name}
+
+defaults:
+  - env: mujoco
+  - data: base
+  - custom
+  - override hydra/job_logging: disabled
+  - override hydra/launcher: local
+  - _self_

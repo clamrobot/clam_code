@@ -1,0 +1,9 @@
+num_updates: 200_000
+name: transformer_clam
+
+defaults:
+  - train_clam
+  - override modules/encoder: act_transformer
+  - override modules/decoder: act_transformer
+  - override model: transformer_clam
+  - _self_

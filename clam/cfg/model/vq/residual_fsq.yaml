@@ -1,0 +1,11 @@
+name: residual_fsq
+
+hp_name: ${.name}_l-${.kwargs.levels}
+
+kwargs:
+  levels: [8, 5, 5, 5]
+  num_quantizers: 2
+
+defaults:
+  - base
+  - _self_

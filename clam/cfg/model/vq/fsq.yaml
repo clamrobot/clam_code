@@ -1,0 +1,10 @@
+name: fsq
+
+hp_name: ${.name}_l-${.kwargs.levels}
+
+kwargs:
+  levels: [8, 5, 5, 5]
+
+defaults:
+  - base
+  - _self_

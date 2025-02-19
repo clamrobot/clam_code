@@ -1,0 +1,27 @@
+num_updates: 200_000
+log_terminal_every: 20_000 
+run_eval_rollouts: True
+log_rollout_videos: True
+
+data: 
+  data_type: n_step 
+  seq_len: 1
+
+
+num_labelled_trajs: 50
+
+lap_ckpt: null 
+lap_ckpt_step: null
+load_lap_ckpt: True
+tmp: null
+
+name: lapa
+base_hp_name: AL-${env.al_ds_name}_nt-${num_labelled_trajs}_s-${seed}
+hp_name: ${resolve_lapa_ckpt_name:${base_hp_name}_${env.hp_name},${tmp},${lap_ckpt}} 
+
+defaults:
+  - base
+  - model: lapa
+  - modules/encoder: mlp
+  - _self_
+

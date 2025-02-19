@@ -1,0 +1,18 @@
+num_updates: 100_000
+log_terminal_every: 500 
+run_eval_rollouts: False
+log_rollout_videos: False
+
+data: 
+  data_type: n_step
+  seq_len: 3
+
+name: dynamo
+hp_name: ${name}_${env.hp_name}_nt-${data.num_trajs}_la-${model.la_dim}_cov-${model.cov_reg_weight}
+
+defaults:
+  - base
+  - modules/encoder: act_transformer
+  - modules/decoder: act_transformer
+  - model: dynamo
+  - _self_

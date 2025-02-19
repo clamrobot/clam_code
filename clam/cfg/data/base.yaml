@@ -1,0 +1,26 @@
+hp_name: null
+
+# where is the dataset stored
+data_dir: /scr/shared/clam
+batch_size: 128
+
+# number of trajectories to use for training
+num_trajs: -1
+
+# number of training examples, -1 means use all
+num_examples: -1
+
+# percent of trajectories to use for training
+train_frac: 0.9
+
+image_obs: ${env.image_obs}
+image_shape: ${env.image_shape}
+data_type: n_step # n_step, transitions
+labelled_data_type: transition
+
+seq_len: 1
+shift: 1
+pad_dataset: False
+shuffle: True
+load_latent_actions: False
+load_relabelled_actions: False # for VPT

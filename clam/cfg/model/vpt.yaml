@@ -1,0 +1,15 @@
+image_obs: ${env.image_obs}
+la_dim: ${env.action_dim}
+embedding_dim: 128
+context_len: 2
+share_input_encoder: False
+
+idm:
+  la_dim: ${model.la_dim}
+  context_len: ${model.context_len}
+  image_obs: ${model.image_obs}
+  net: ${encoder}
+  embedding_dim: ${model.embedding_dim}
+
+defaults:
+  - base

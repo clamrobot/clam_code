@@ -1,0 +1,3 @@
+name: null # type of model i am evaluating
+lam_ckpt: null
+datasets: null

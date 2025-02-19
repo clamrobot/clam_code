@@ -1,0 +1,14 @@
+name: residual
+
+hp_name: ${.name}_cb-${.kwargs.codebook_size}-nq-${.kwargs.num_quantizers}
+
+kwargs:
+  codebook_size: 128 # codebook size
+  num_quantizers: 2
+  stochastic_sample_codes: True
+  sample_codebook_temp: 0.1         # temperature for stochastically sampling codes, 0 would be equivalent to non-stochastic
+  shared_codebook: True              # whether to share the codebooks for all quantizers or not
+
+defaults:
+  - base
+  - _self_

@@ -1,0 +1,19 @@
+num_updates: 200_000
+log_terminal_every: 20_000 
+
+data: 
+  data_type: n_step 
+  seq_len: 3
+
+lam_ckpt: null
+lam_ckpt_step: null
+
+name: lap
+hp_name: ${resolve_lapa_ckpt_name:${name}_${env.hp_name},${lam_ckpt}} 
+
+defaults:
+  - base
+  - model: lapa
+  - modules/encoder: mlp
+  - _self_
+

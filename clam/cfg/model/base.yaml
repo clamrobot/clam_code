@@ -1,0 +1,2 @@
+# shared model configs
+use_pretrained_embeddings: False

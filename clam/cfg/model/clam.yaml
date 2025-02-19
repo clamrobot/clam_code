@@ -1,0 +1,53 @@
+image_obs: ${env.image_obs}
+la_dim: 8 
+embedding_dim: 128
+context_len: 2
+share_input_encoder: False
+activate_output: ${.fdm.activate_output}
+
+idm:
+  la_dim: ${model.la_dim}
+  context_len: ${model.context_len}
+  image_obs: ${model.image_obs}
+  net: ${encoder}
+  embedding_dim: ${model.embedding_dim}
+
+  quantize_la: False
+  use_quantized_las: True
+  vq: ${model.vq}
+  distributional_la: ${model.distributional_la}
+
+fdm: 
+  la_dim: ${model.la_dim}
+  context_len: ${model.context_len}
+  input_encoder: ${encoder}
+  net: ${decoder}
+  embedding_dim: ${model.embedding_dim}
+
+  image_obs: ${model.image_obs}
+  n_frame_stack: ${env.n_frame_stack}
+
+  # number of steps to predict into the future
+  k_step_pred: 1
+  predict_target_embedding: False
+  distributional_la: ${model.distributional_la}
+
+  activate_output: True
+
+action_decoder:
+  image_obs: False
+  embedding_dim: 512
+  net:
+    hidden_dims: [1024, 1024, 1024]
+  
+  # this is for Metaworld, make sure to change it for other envs
+  action_activation: Tanh
+  action_scale: 1.0
+
+recon_loss_weight: 1.0
+distributional_la: False
+kl_loss_weight: 1e-2
+
+defaults:
+  - base
+  - vq: ema

@@ -1,0 +1,24 @@
+num_updates: 150_000
+log_terminal_every: 20_000 
+run_eval_rollouts: True
+log_rollout_videos: True
+
+data: 
+  data_type: n_step
+  seq_len: 3
+  num_trajs: 100
+
+vpt_ckpt: null
+vpt_ckpt_step: null 
+load_from_ckpt: False
+
+name: vpt_bc
+base_hp_name: nt-${data.num_trajs}_d-${env.ds_name}_s-${seed}_${env.hp_name}_lr-${optimizer.params.lr}
+hp_name: ${resolve_vpt_ckpt_name:${base_hp_name},${vpt_ckpt}}
+
+
+defaults:
+  - base
+  - model: bc
+  - modules/encoder: mlp
+  - _self_

@@ -1,0 +1,25 @@
+num_updates: 200_000
+# log_interval: 100
+name: st_vivit_clam
+
+action_decoder_bs: 64
+
+env:
+  n_frame_stack: 1
+  image_obs: True
+  image_shape: [64, 64]
+
+data:
+  batch_size: 64
+
+model:
+  context_len: 2
+  la_dim: 16
+  concatenate_gripper_state: True
+  
+defaults:
+  - train_clam
+  - override modules/encoder: st_transformer
+  - override modules/decoder: st_transformer
+  - override model: st_vivit_clam
+  - _self_

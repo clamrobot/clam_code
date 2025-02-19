@@ -1,0 +1,3 @@
+# @package decoder
+name: mlp
+hidden_dims: [1024, 1024]

@@ -1,0 +1,10 @@
+idm:
+  # embed to same dimension as transformer
+  input_embed_dim: ${encoder.dim_model}
+    
+fdm:
+  input_embed_dim: ${encoder.dim_model}
+  
+defaults:
+  - clam
+  - _self_

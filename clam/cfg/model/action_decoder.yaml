@@ -1,0 +1,21 @@
+encoder: ${encoder}
+image_obs: ${env.image_obs}
+condition_on_task: False
+embedding_dim: 512
+
+net:
+  hidden_dims: [1024, 1024]
+
+gaussian_policy: False
+
+# set this if we want to use a pretrained vision model for the encoder
+# options: resnet18, ..., lapa, dynamo
+feature_extractor: null
+finetune_feature_extractor: False
+feature_extractor_ckpt: null
+
+action_activation: null
+action_scale: null
+
+defaults:
+  - base

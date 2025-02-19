@@ -1,0 +1,16 @@
+# @package decoder
+
+name: transformer
+num_layers: 6
+
+layer:
+  d_model: 512
+  nhead: 8
+  dim_feedforward: 2048
+  dropout: 0.1
+  activation: gelu
+  layer_norm_eps: 1e-5
+  batch_first: True 
+  bias: True
+
+pos_encoding: "absolute" # learned, sin

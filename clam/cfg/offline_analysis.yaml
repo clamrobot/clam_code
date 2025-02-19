@@ -1,0 +1,2 @@
+name: null # type of model i am evaluating
+ckpt_file: null

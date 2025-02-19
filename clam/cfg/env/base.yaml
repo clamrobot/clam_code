@@ -1,0 +1,24 @@
+image_extra: im-${.image_obs}_f-${.n_frame_stack}_p-${.use_pretrained_embeddings}
+hp_name: ${fix_env_hp_name:env_hp, ${.image_obs}, ${.image_extra}}
+
+env_name: null
+env_id: null 
+dataset_name: null
+
+# number of parallel envs to run during evaluation time
+num_envs: 20 
+image_obs: null 
+
+# TODO:
+gamma: 0.999
+
+# TODO: not used
+task_dim: 1
+image_shape: null
+action_dim: null
+
+n_frame_stack: 1
+use_pretrained_embeddings: ${model.use_pretrained_embeddings}
+r3m_id: resnet50
+
+action_scale: 1

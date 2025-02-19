@@ -1,0 +1,17 @@
+num_updates: 200_000
+log_terminal_every: 20_000 
+
+data: 
+  data_type: n_step
+  seq_len: ${eval:${model.context_len} + 1}
+
+model_cls: mlp
+
+name: vpt
+hp_name: nt-${data.num_trajs}_d-${env.ds_name}_s-${seed}_${env.hp_name}_lr-${optimizer.params.lr}
+
+defaults:
+  - base
+  - model: vpt
+  - modules/encoder: mlp
+  - _self_

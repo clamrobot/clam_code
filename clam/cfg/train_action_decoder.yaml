@@ -1,0 +1,20 @@
+num_updates: 200_000
+log_terminal_every: 20_000 
+num_evals: 5
+# num_labelled_trajs: 50
+
+data: 
+  data_type: transitions
+  load_latent_actions: True
+
+lam_ckpt: null
+lam_ckpt_step: null
+
+name: action_decoder
+hp_name: ${resolve_ckpt_name:nt-${data.num_trajs}_${env.hp_name},${lam_ckpt}} 
+
+defaults:
+  - base
+  - model: action_decoder
+  - modules/encoder: mlp
+  - _self_

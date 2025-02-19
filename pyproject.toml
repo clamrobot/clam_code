@@ -1,0 +1,7 @@
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+extend-select = ["I"] # adding isort rules since i will be using ruff on CLI as well as for import sorting
+unfixable = ["F401"] # do not remove unused imports
+ignore = ["F722"] # for jaxtyping annotation 

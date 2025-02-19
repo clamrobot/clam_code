@@ -1,0 +1,9 @@
+# @package encoder
+
+name: impala_cnn
+
+# hidden_dim: [32, 64, 128]
+# cnn_scale: 1
+
+hidden_dim: [16, 32, 32]
+cnn_scale: 4
