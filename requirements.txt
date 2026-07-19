@@ -1,0 +1,55 @@
+# math
+numpy==1.26.4
+scipy
+scikit-learn
+einops
+seaborn
+gym==0.23.1
+
+jupyterlab 
+jupyterlab_widgets
+ipywidgets
+
+# gymnax
+gymnasium
+matplotlib 
+tqdm 
+orbax
+ray[tune]
+flax==0.8.4
+tensorflow==2.15.1
+tensorflow-datasets
+rlds
+dm_pix
+tensorflow_addons
+tensorflow_probability==0.23.0
+jaxtyping
+
+opencv-python
+moviepy
+
+# Logging
+wandb
+ipdb
+loguru
+
+absl-py
+dataclasses
+ml_collections
+
+# Formatting
+ruff
+
+# Config
+hydra-core
+omegaconf
+
+# Atari
+tyro
+# gym[atari]
+# autorom[accept-rom-license]
+stable_baselines3
+
+# d4rl
+# 'Cython<3'
+accelerate
